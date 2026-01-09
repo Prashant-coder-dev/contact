@@ -9,7 +9,13 @@ const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 /* ================= MIDDLEWARE ================= */
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 app.use(express.json());
 
 /* ================= HEALTH CHECK ================= */
